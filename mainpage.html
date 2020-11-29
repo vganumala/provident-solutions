@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>provident property solutions</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script
+      src="https://kit.fontawesome.com/70df9c1945.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+        text-transform: uppercase;
+        box-sizing: border-box;
+        font-family: monospace;
+      }
+      .total {
+        width: 100%;
+        height: 100%;
+      }
+      .titlebar {
+        width: 100%;
+        height: 70px;
+        text-transform: uppercase;
+      }
+      .titlebar h2 {
+        padding-top: 10px;
+        padding-right: 10px;
+        font-family: sans-serif;
+        font-weight: bolder;
+        text-align: right;
+      }
+      .titlebar p {
+        font-family: monospace;
+        font-weight: bolder;
+        padding-bottom: 15px;
+        margin-top: 0px;
+        text-align: right;
+        letter-spacing: 1px;
+        padding-right: 10px;
+      }
+      /* nav bar style */
+      .nav {
+        position: fixed;
+        top: 0px;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        box-shadow: 0.5px 0.5px 3px 0.5px black;
+        background-color: white;
+        transition: left 0.4s ease;
+      }
+      .nav span {
+        font-size: medium;
+        line-height: 70px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        padding-left: 20px;
+      }
+      .nav ul {
+        width: 100%;
+        height: 100%;
+        list-style-type: none;
+      }
+      .nav ul li {
+        line-height: 50px;
+        border-bottom: 1px solid rgb(175, 174, 174);
+      }
+      .nav ul li a {
+        position: relative;
+        text-decoration: none;
+        font-weight: bold;
+        display: block;
+        font-size: 17px;
+        padding-left: 20px;
+        width: 100%;
+        color: black;
+      }
+      .nav ul li a i {
+        font-size: 9px;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        transition: transform 0.5s ease;
+      }
+      .nav ul li a i.rotate {
+        transform: translateY(-50%) rotate(180deg);
+      }
+      .nav ul li a:hover {
+        color: white;
+        background: linear-gradient(
+          120deg,
+          rgb(165, 165, 165),
+          rgb(165, 165, 165),
+          rgb(61, 58, 58)
+        );
+      }
+      .nav ul ul {
+        position: static;
+        display: none;
+      }
+      .nav ul .ser-dis.show {
+        display: block;
+      }
+      .nav ul .sal-dis.show {
+        display: block;
+      }
+      .nav ul .dev-dis.show {
+        display: block;
+      }
+      .nav ul .pro-dis.show {
+        display: block;
+      }
+      .nav ul .pur-dis.show {
+        display: block;
+      }
+      .nav ul ul li {
+        line-height: 22px;
+      }
+      .nav ul ul li a {
+        font-size: 15px;
+        padding-left: 40px;
+        font-weight: 400;
+      }
+      .mnbt {
+        position: absolute;
+        top: 15px;
+        left: 10px;
+        background: white;
+        text-align: center;
+        border-radius: 5px;
+        height: 35px;
+        width: 35px;
+        cursor: pointer;
+        box-shadow: 0.5px 0.5px 3px 0.5px black;
+        transition: left 0.4s ease;
+      }
+      .mnbt i {
+        padding: 10px;
+      }
+      .mnbt.click i::before {
+        content: "\f00d";
+      }
+      .mnbt.click {
+        left: 260px;
+      }
+      .nav.show {
+        left: 0px;
+      }
+      /* home styles */
+      .home {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        text-transform: capitalize;
+        background: url("bgh.jpg") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o--background-size: cover;
+        background-size: cover;
+      }
+      .home h2 {
+        padding-top: 350px;
+        font-size: 50px;
+        padding-bottom: 35px;
+        font-family: cursive;
+        color: white;
+      }
+      .home a {
+        text-decoration: none;
+      }
+      .home a i {
+        color: white;
+        font-size: 50px;
+        padding-top: 0%;
+      }
+      .pars {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+      }
+      .pars .hpf {
+        margin-left: 0.5%;
+        padding: 50px;
+        margin-top: 30px;
+        color: black;
+        font-size: 20px;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        line-height: normal;
+        text-align: justify;
+        width: 96%;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        height: 200px;
+        box-shadow: -10px -10px 15px rgba(130, 129, 129, 0.5),
+          10px 10px 15px rgba(208, 202, 117, 0.81);
+        border-radius: 3px;
+      }
+      .pars .hps {
+        margin-left: 3.5%;
+        padding: 50px;
+        margin-top: 30px;
+        color: black;
+        font-size: 20px;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        line-height: normal;
+        text-align: justify;
+        width: 96%;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        height: 200px;
+        box-shadow: -10px -10px 15px rgba(111, 109, 109, 0.5),
+          10px 10px 15px rgba(140, 171, 105, 0.857);
+        border-radius: 3px;
+      }
+      .pars .hpt {
+        margin-left: 0.5%;
+        padding: 50px;
+        margin-top: 30px;
+        color: black;
+        font-size: 20px;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        line-height: normal;
+        text-align: justify;
+        width: 96%;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        height: 200px;
+        box-shadow: -10px -10px 15px rgba(105, 100, 100, 0.714),
+          10px 10px 15px rgba(177, 82, 82, 0.537);
+        border-radius: 3px;
+        padding-bottom: 20px;
+      }
+      .bck {
+        margin-top: 20px;
+        width: 100%;
+        height: 340px;
+        background: black;
+        text-align: center;
+        color: white;
+      }
+      #contact {
+        padding-top: 20px;
+      }
+      #contact h4 {
+        font-size: 30px;
+        font-family: cursive;
+        color: white;
+      }
+      #contact p {
+        font-size: 20px;
+        font-family: monospace;
+        color: white;
+        font-weight: bolder;
+        padding: 5px;
+      }
+      #contact address {
+        font-size: 20px;
+        font-family: monospace;
+        color: white;
+        padding: 15px;
+      }
+      .bck hr {
+        padding-top: 1px;
+      }
+      #about {
+        width: 100%;
+        text-align: center;
+      }
+      #about .but {
+        width: 100%;
+        margin-top: 50px;
+        height: 400px;
+      }
+      .bot {
+        position: relative;
+        top: -230px;
+        font-size: 50px;
+        font-family: cursive;
+        color: white;
+      }
+      .ov {
+        text-align: justify;
+        margin-top: 0%;
+        width: 95%;
+        margin-left: 2.5%;
+        background: linear-gradient(120deg, white, white, white, grey);
+        padding: 20px;
+        border-bottom: 3px soild grey;
+        border-radius: 3px;
+      }
+      .ov h4 {
+        text-align: right;
+        font-family: cursive;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="total">
+      <div class="titlebar">
+        <h2>provident properties</h2>
+        <p>management solutions</p>
+      </div>
+      <hr />
+      <!--nav bar-->
+      <div class="mnbt">
+        <i class="fas fa-bars tree"></i>
+      </div>
+      <div class="nav">
+        <span>menu</span>
+        <ul>
+          <li>
+            <a href="#" class="ser-tab"
+              >services <i class="fas fa-chevron-down frst"></i
+            ></a>
+            <ul class="ser-dis">
+              <li><a href="">documentation verification</a></li>
+              <li><a href="">tax payment services</a></li>
+              <li><a href="">agreements and contract</a></li>
+              <li><a href="">property registration</a></li>
+              <li><a href="">due dilligences</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="dev-tab"
+              >development <i class="fas fa-chevron-down sec"></i
+            ></a>
+            <ul class="dev-dis">
+              <li><a href="">site development</a></li>
+              <li><a href="">contracting</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="pro-tab"
+              >property management <i class="fas fa-chevron-down tree"></i
+            ></a>
+            <ul class="pro-dis">
+              <li><a href="">for land lords</a></li>
+              <li><a href="">for tenants</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="pur-tab"
+              >purchase <i class="fas fa-chevron-down four"></i
+            ></a>
+            <ul class="pur-dis">
+              <li><a href="">buy a property</a></li>
+              <li><a href="">legal advise</a></li>
+              <li><a href="">final checks</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="sal-tab"
+              >sales <i class="fas fa-chevron-down five"></i
+            ></a>
+            <ul class="sal-dis">
+              <li><a href="">open plots</a></li>
+              <li><a href="">independant villas</a></li>
+              <li><a href="">row houses</a></li>
+              <li><a href="">pent houses</a></li>
+              <li><a href="">commerical shops</a></li>
+            </ul>
+          </li>
+          <li><a href="#about">about us</a></li>
+          <li><a href="#contact">contact</a></li>
+        </ul>
+      </div>
+      <script>
+        $(".mnbt").click(function () {
+          $(this).toggleClass("click");
+          $(".nav").toggleClass("show");
+        });
+        $(".ser-tab").click(function () {
+          $(".nav ul .ser-dis").toggleClass("show");
+          $(".nav ul .frst").toggleClass("rotate");
+        });
+        $(".dev-tab").click(function () {
+          $(".nav ul .dev-dis").toggleClass("show");
+          $(".nav ul .sec").toggleClass("rotate");
+        });
+        $(".pro-tab").click(function () {
+          $(".nav ul .pro-dis").toggleClass("show");
+          $(".nav ul .tree").toggleClass("rotate");
+        });
+        $(".pur-tab").click(function () {
+          $(".nav ul .pur-dis").toggleClass("show");
+          $(".nav ul .four").toggleClass("rotate");
+        });
+        $(".sal-tab").click(function () {
+          $(".nav ul .sal-dis").toggleClass("show");
+          $(".nav ul .five").toggleClass("rotate");
+        });
+      </script>
+      <div class="home">
+        <h2>welcome</h2>
+        <a href="#parr">
+          <i class="fas fa-angle-down"></i>
+        </a>
+      </div>
+      <div class="pars" id="parr">
+        <p class="hpf">
+          <b>provident property management solutions </b>is a syndicate of
+          property devolopers,builders and professional engineers. Provident
+          property Managment Solutions has been in the business of Real Estate,
+          since 2019, we have developed multiple projects in Hyderabad’s prime
+          residential and Commercial localities of Attapur , Rajendranagar and
+          Narsinghi.
+        </p>
+        <p class="hps">
+          We have been consistently handing over possession of the homes in
+          time. Based upon our proven business track record over the years, we
+          are the ideal choice for those who wish to buy homes, flats and plots
+          of land in and around Hyderabad. We have all the resources and several
+          years of experiences and skill set to complete any project Big or
+          Small in the given time frame.
+        </p>
+        <p class="hpt">
+          Our approach to building the homes is a balance between satisfying the
+          customer's needs and maintaining the precision and techniques demanded
+          of a high quality building. There are ongoing projects in and around
+          Tolichowki area of Hyderabad.
+        </p>
+      </div>
+      <div id="about">
+        <img src="pone.jpg" alt="" class="but" />
+        <h4 class="bot">about</h4>
+      </div>
+      <div class="ov">
+        <h4>our vision</h4>
+        <p>is to be provide a quality construction projects.</p>
+      </div>
+      <div class="ov">
+        <h4>quality policy</h4>
+        <p>
+          provident property management solutions strives to achieve enhanced
+          customer satisfaction by delivering a quality product through timely
+          completion with safe working environment. we dedicate ourselves for
+          continual improvement in all fields of our business.
+        </p>
+      </div>
+      <div class="ov">
+        <h4>quality objective</h4>
+        <p>
+          Our aim is to consistently deliver quality product by adhering to the
+          set specifications, contractual, regulation and statutory
+          requirements. We strive to achieve enhanced customer satisfaction
+          through cost-effective and timely completion. We motivate and train
+          the staff for continual improvement of quality standards. We update
+          and implement the procedures complying with international standards.
+        </p>
+      </div>
+      <div class="ov">
+        <h4>market reasearch</h4>
+        <p>
+          In today’s scenario, there is immense potential in Hyderabad. At
+          Provident Property Management Solutions we constantly update with the
+          latest developments and happenings in Hyderabad real Estate market. A
+          lot of research is done before choosing and starting any new project
+          in terms of location, customer, product, quality, specifications,
+          legality, Govt. regulations etc. The company carefully considers the
+          following aspects of each project to ensure that the customers receive
+          value for their investment.
+        </p>
+      </div>
+      <!--contact-->
+    </div>
+    <div class="bck">
+      <div id="contact">
+        <h4>- contact us -</h4>
+        <p>office adress</p>
+        <address>
+          Pillar No 179 Attapur,<br />
+          Fort View Colony,Fort View Residency <br />
+          Flat No : 401,403,Hyderabad.Telangana-500048. <br />
+          Contact : 8686008878,9100786251.
+        </address>
+        <hr color="white" />
+        <p class="one">&copy;provident property management solutions</p>
+        <p class="one">this website developed by vganumala</p>
+      </div>
+    </div>
+  </body>
+</html>
